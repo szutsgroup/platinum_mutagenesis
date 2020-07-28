@@ -1,2 +1,2 @@
 # platinum_mutagenesis
-Supplementary material
+Supplementary scripts
