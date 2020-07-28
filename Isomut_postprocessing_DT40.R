@@ -25,7 +25,7 @@ geno_list <- list(
 
 
 #reading in isomut SNV output file
-snv <- read.delim("isomut_output/all_SNVs.isomut")
+snv <- read.delim("isomut_output/all_SNVs_DT40.isomut")
 snv$sample <- substr(snv$X.sample_name, 0, 5)
 
 #cumulative plot: SNV counts vs. Fischer score
@@ -59,7 +59,7 @@ for (i in 1:length(treat_list)) {
 
 
 #reading in isomut indel output file
-indel <- read.delim(file.path(outDir, "all_indels.isomut"))
+indel <- read.delim(file.path(outDir, "all_indels_DT40.isomut"))
 indel$sample <- substr(indel$X.sample_name, 0, 5)
 
 #Fischer scores separately for insertions and deletions
@@ -89,9 +89,9 @@ cdelm <- melt(cdel, id = "treshold")
 cdelm$status <- ifelse(cdelm$variable %in% setdiff(treat_list$starting_clone, problematic), "starting clone", "other")
 ggplot(data = cdelm, aes(x = treshold, y = log(value, base = 10), group = variable, color = status)) + geom_line() + ylab("log10 (Deletion number)") + xlab("Score treshold") + geom_hline(yintercept = log10(1), linetype = 2)
 
-write.table(snv_filt, file = "all_SNVs_postprocessed.isomut", sep = "\t", row.names = FALSE, quote = FALSE)
-write.table(del_filt, file = "all_DELs_postprocessed.isomut", sep = "\t", row.names = FALSE, quote = FALSE)
-write.table(ins_filt, file = "all_INSs_postprocessed.isomut", sep = "\t", row.names = FALSE, quote = FALSE)
+write.table(snv_filt, file = "all_SNVs_postprocessed_DT40.isomut", sep = "\t", row.names = FALSE, quote = FALSE)
+write.table(del_filt, file = "all_DELs_postprocessed_DT40.isomut", sep = "\t", row.names = FALSE, quote = FALSE)
+write.table(ins_filt, file = "all_INSs_postprocessed_DT40.isomut", sep = "\t", row.names = FALSE, quote = FALSE)
 
 # triplet spectra
 
